@@ -1,17 +1,26 @@
-{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}{{ article.title }}{% endblock %}
-
-{% block content %}
-<div class="article-detail">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>{{ article.title }}</title>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+</head>
+<body>
+<header>
     <h1>{{ article.title }}</h1>
-    <p>{{ article.publication_date }}</p>
-    <div class="author">
-        <img src="{{ article.author.photo.url }}" alt="{{ article.author.name }}">
-        <p>{{ article.author.name }}</p>
-    </div>
-    <div class="content">
-        {{ article.content }}
-    </div>
-</div>
-{% endblock %}
+    <p>Published on {{ article.publication_date|date:"F d, Y" }}</p>
+    <p>By {{ article.author.name }}</p>
+</header>
+<main>
+    <article>
+        <div>
+            <img src="{{ article.author.photo.url }}" alt="{{ article.author.name }}" class="img-fluid rounded-circle">
+            <p>{{ article.content }}</p>
+        </div>
+    </article>
+</main>
+</body>
+</html>
