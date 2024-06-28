@@ -38,6 +38,17 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="{% url 'article_list' %}" class="active">Home</a></li>
+          {% if user.is_authenticated %}
+          <li>
+            <form method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-link" style="padding: 0;">Logout</button>
+            </form>
+          </li>
+          {% else %}
+          <li><a href="{% url 'auth_view' %}">Authentification</a></li>
+
+          {% endif %}
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -121,7 +132,8 @@
           <div class="col-md-6 col-lg-4">
             <div class="post-entry" data-aos="fade-up" data-aos-delay="100">
               <a href="{% url 'article_detail' article.pk %}" class="thumb d-block">
-                <img src="{{ article.image }}" alt="Image" class="img-fluid rounded">
+                <img src="{{ article.image
+                 }}" alt="Image" class="img-fluid rounded">
               </a>
               <div class="post-content">
                 <div class="meta">
@@ -136,7 +148,6 @@
                   </div>
                   <div class="author-name">
                     <strong class="d-block">{{ article.author.name }}</strong>
-                    <span class="">Lead Product Designer</span>
                   </div>
                 </div>
               </div>
