@@ -6,7 +6,7 @@
 }
 
 html{
-    background-color: #dde6f0;
+    background-color: #d0f0d5;
 }
 
 body{
@@ -28,7 +28,7 @@ input, button{
     position: relative;
     width: 900px;
     height: 700px;
-    background:#c9def0;
+    background:#d0f0d5;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
     border-radius: 15px;
 }

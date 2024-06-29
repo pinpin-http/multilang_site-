@@ -90,10 +90,10 @@
               </script>
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <img src="{% static 'img/img_h_6.jpg' %}" alt="Image" class="img-fluid">
+                  <img src="{% static 'img/PyDj.jpg' %}" alt="Image" class="img-fluid">
                 </div>
                 <div class="swiper-slide">
-                  <img src="{% static 'img/img_h_7.jpg' %}" alt="Image" class="img-fluid">
+                  <img src="{% static 'img/auth.png' %}" alt="Image" class="img-fluid">
                 </div>
                 <div class="swiper-slide">
                   <img src="{% static 'img/img_h_8.jpg' %}" alt="Image" class="img-fluid">
@@ -106,18 +106,13 @@
             <span class="section-subtitle" data-aos="fade-up">Welcome</span>
             <h1 class="mb-4" data-aos="fade-up">Excepteur sint occaecat cupidatat non proident</h1>
             <p data-aos="fade-up">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated they
-              live in Bookmarksgrove right at the coast of the Semantics, a large
-              language ocean.
-            </p>
+              Ce projet a été créé dans le cadre d'un test technique destiné à démontrer mes compétences en développement d'applications web avec le framework Django. Le projet vise à simuler un site de blog où les utilisateurs peuvent s'inscrire, se connecter, publier des articles, et voir les articles publiés par d'autres utilisateurs en incluant un support multilang et une implementation de LLM.            </p>
             <p class="mt-5" data-aos="fade-up">
-              <a href="#" class="btn btn-get-started">Get Started</a>
             </p>
           </div>
         </div>
       </div>
-    </section><!-- /About Section -->
+    </section>
 
     <!-- Blog Posts Section -->
     <section id="blog-posts" class="blog-posts section">
@@ -125,6 +120,18 @@
       <div class="container section-title" data-aos="fade-up">
         <p>Recent Posts</p>
         <h2>Blog Posts</h2>
+       
+        {% if user.is_authenticated %}
+        <div class="d-flex align-items-center">
+          Bonjour <img src="{{ user.author.photo.url }}" alt="Profile Image" class="img-fluid rounded-circle" style="width: 40px; height: 40px; margin-right: 10px; margin-right: 10px;">
+          <strong style="margin-right:10px ;">{{ user.author.name }}</strong>
+          vous pouvez <a href="{% url 'add_article' %}" class="btn btn-primary ml-3" style="margin-left: 10px; background-color:#34bf49;">Ajouter un Article</a>
+      </div>
+      {% endif %}
+
+      </div>
+ 
+    </div>
       </div><!-- End Section Title -->
       <div class="container">
         <div class="row gy-4">
@@ -132,12 +139,11 @@
           <div class="col-md-6 col-lg-4">
             <div class="post-entry" data-aos="fade-up" data-aos-delay="100">
               <a href="{% url 'article_detail' article.pk %}" class="thumb d-block">
-                <img src="{{ article.image
-                 }}" alt="Image" class="img-fluid rounded">
+                
               </a>
               <div class="post-content">
                 <div class="meta">
-                  <a href="#" class="cat">Development</a> •
+                  <a href="#" class="cat">Publié le :</a> •
                   <span class="date">{{ article.publication_date|date:"F d, Y" }}</span>
                 </div>
                 <h3><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
@@ -154,7 +160,7 @@
             </div>
           </div>
           {% endfor %}
-        </div>
+   
       </div>
     </section><!-- /Blog Posts Section -->
 
