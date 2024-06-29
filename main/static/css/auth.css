@@ -6,7 +6,7 @@
 }
 
 html{
-    background-color: #d0f0d5;
+    background-color: #000000;
 }
 
 body{
@@ -118,6 +118,7 @@ button{
 .cont.s-signup .sub-cont{
     -webkit-transform:translate3d(-640px, 0, 0);
     transform:translate3d(-640px, 0, 0);
+    background-color: #d0f0d5;
 }
 
 .img{
@@ -138,7 +139,7 @@ button{
     top: 0;
     width: 900px;
     height: 100%;
-    background-image: url(images/bg.jpg);
+    background-color: #d0f0d5;
     background-size: cover;
     transition: -webkit-transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out, -webkit-transform 1.2s ease-in-out;
