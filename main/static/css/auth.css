@@ -5,9 +5,6 @@
     font-family: 'Nunito', sans-serif;
 }
 
-html{
-    background-color: #000000;
-}
 
 body{
     width: 100%;
@@ -16,6 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     font-family: 'Nunito', sans-serif;
+    background-color:#e4ffe7;
 }
 
 input, button{
@@ -203,6 +201,7 @@ button{
     padding-top: 65px;
     -webkit-transition-timing-function:ease-out;
     transition-timing-function:ease-out;
+    background-color: #d0f0d5;
 }
 
 .cont.s-signup .sign-in{
@@ -210,6 +209,7 @@ button{
     transition-timing-function:ease-in-out;
     -webkit-transition-duration:1.2s;
     transition-duration:1.2s;
+    background-color: #d0f0d5;
     -webkit-transform:translate3d(640px, 0, 0);
     transform:translate3d(640px, 0, 0);
 }
@@ -275,9 +275,11 @@ button{
 .sign-up{
     -webkit-transform:translate3d(-900px, 0, 0);
     transform:translate3d(-900px, 0, 0);
+    background-color: #d0f0d5;
 }
 
 .cont.s-signup .sign-up{
     -webkit-transform:translate3d(0, 0, 0);
     transform:translate3d(0, 0, 0);
+    background-color: #d0f0d5;
 }

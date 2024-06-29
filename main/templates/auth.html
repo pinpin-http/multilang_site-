@@ -36,7 +36,7 @@
             {{ login_form.as_p }}
             <button class="submit" type="submit">Sign In</button>
           </form>
-          <a href="{% url 'article_list' %}" class="btn btn-link">Back to Home</a>
+          <a href="{% url 'article_list' %}" class="btn btn-link" style="color: black;">Back to Home</a>
         </div>
 
         <div class="sub-cont">
@@ -61,16 +61,14 @@
               {{ register_form.as_p }}
               <button type="submit" class="submit">Sign Up Now</button>
             </form>
-            <a href="{% url 'article_list' %}" class="btn btn-link">Back to Home</a>
+            <a href="{% url 'article_list' %}" class="btn btn-link" style="color: black;">Back to Home</a>
           </div>
         </div>
       </div>
     </div>
   </main>
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+ 
   <!-- Preloader -->
   <div id="preloader"></div>
 
