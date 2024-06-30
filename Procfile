@@ -1,1 +1,1 @@
-web: gunicorn multilang_site- --log-file -
+web: gunicorn multilang_site --log-file -
