@@ -58,7 +58,8 @@ Une application web faite dans le cadre d'un test technique simulant un forum av
 
 ## État du Projet
 
-Ce projet est non fini en raison d'un manque de temps et a été réalisé en 3 jours. Il manque les fonctionnalitées basé sur l'IA et la traduction des articles dans la bdd.
+Ce projet est inachevé en raison d'un manque de temps et a été réalisé en 3 jours. Les fonctionnalités basées sur l'IA et la traduction des articles dans la base de données ne sont pas encore implémentées. Avec 6 heures supplémentaires, j'aurais pu les ajouter; malheureusement, mes évaluations de fin d'année m'ont pris de court. J'espère que vous comprendrez ma situation.
+
 
 ## Contribution
 
