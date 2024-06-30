@@ -1,11 +1,12 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Login & Registration Form</title>
+  <title>{% trans "Login & Registration Form" %}</title>
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
@@ -30,38 +31,38 @@
       {% endif %}
       <div class="cont">
         <div class="form sign-in">
-          <h2>Sign In</h2>
+          <h2>{% trans "Sign In" %}</h2>
           <form method="POST" action="{% url 'auth_view' %}">
             {% csrf_token %}
             {{ login_form.as_p }}
-            <button class="submit" type="submit">Sign In</button>
+            <button class="submit" type="submit">{% trans "Sign In" %}</button>
           </form>
-          <a href="{% url 'article_list' %}" class="btn btn-link" style="color: black;">Back to Home</a>
+          <a href="{% url 'article_list' %}" class="btn btn-link" style="color: black;">{% trans "Back to Home" %}</a>
         </div>
 
         <div class="sub-cont">
           <div class="img">
             <div class="img-text m-up">
-              <h1>New here?</h1>
-              <p>Sign up and discover</p>
+              <h1>{% trans "New here?" %}</h1>
+              <p>{% trans "Sign up and discover" %}</p>
             </div>
             <div class="img-text m-in">
-              <h1>One of us?</h1>
-              <p>Just sign in</p>
+              <h1>{% trans "One of us?" %}</h1>
+              <p>{% trans "Just sign in" %}</p>
             </div>
             <div class="img-btn">
-              <span class="m-up">Sign Up</span>
-              <span class="m-in">Sign In</span>
+              <span class="m-up">{% trans "Sign Up" %}</span>
+              <span class="m-in">{% trans "Sign In" %}</span>
             </div>
           </div>
           <div class="form sign-up">
-            <h2>Sign Up</h2>
+            <h2>{% trans "Sign Up" %}</h2>
             <form method="POST" enctype="multipart/form-data" action="{% url 'auth_view' %}">
               {% csrf_token %}
               {{ register_form.as_p }}
-              <button type="submit" class="submit">Sign Up Now</button>
+              <button type="submit" class="submit">{% trans "Sign Up Now" %}</button>
             </form>
-            <a href="{% url 'article_list' %}" class="btn btn-link" style="color: black;">Back to Home</a>
+            <a href="{% url 'article_list' %}" class="btn btn-link" style="color: black;">{% trans "Back to Home" %}</a>
           </div>
         </div>
       </div>

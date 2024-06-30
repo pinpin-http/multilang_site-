@@ -1,12 +1,13 @@
-
 {% load static %}
+{% load i18n %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Articles</title>
+  <title>{% trans "Articles" %}</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -30,29 +31,37 @@
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
       <a href="{% url 'article_list' %}" class="logo d-flex align-items-center">
-        <h1 class="sitename">Forum Django</h1>
+        <h1 class="sitename">{% trans "Forum Django" %}</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="{% url 'article_list' %}" class="active">Home</a></li>
+          <li><a href="{% url 'article_list' %}" class="active">{% trans "Home" %}</a></li>
           {% if user.is_authenticated %}
           <li>
             <form method="post" action="{% url 'logout' %}">
               {% csrf_token %}
-              <button type="submit" class="btn btn-link" style="padding: 0;">Logout</button>
+              <button type="submit" class="btn btn-link" style="padding: 0; color: #34bf49;">{% trans "Logout" %}</button>
             </form>
           </li>
           {% else %}
-          <li><a href="{% url 'auth_view' %}">s'authentifier</a></li>
-
+          <li><a href="{% url 'auth_view' %}" style="color: #34bf49;">{% trans "Sign In" %}</a></li>
           {% endif %}
-        </ul>
+        <li>
+        <form id="languageForm" action="{% url 'set_language' %}" method="post" class="d-flex ms-3">
+          {% csrf_token %}
+          <select name="language" class="form-select me-2" aria-label="{% trans 'Select language' %}" onchange="this.form.submit()">
+              {% get_current_language as LANGUAGE_CODE %}
+              {% get_available_languages as LANGUAGES %}
+              {% for lang_code, lang_name in LANGUAGES %}
+                  <option value="{{ lang_code }}" {% if lang_code == LANGUAGE_CODE %}selected{% endif %}>{{ lang_name }}</option>
+              {% endfor %}
+          </select>
+      </form></li>
+    </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
-
     </div>
   </header>
 
@@ -90,25 +99,23 @@
               </script>
               <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                  <img src="{% static 'img/PyDj.jpg' %}" alt="Image" class="img-fluid">
+                  <img src="{% static 'img/PyDj.jpg' %}"  class="img-fluid">
                 </div>
                 <div class="swiper-slide">
-                  <img src="{% static 'img/auth.png' %}" alt="Image" class="img-fluid">
+                  <img src="{% static 'img/auth.png' %}"  class="img-fluid">
                 </div>
                 <div class="swiper-slide">
-                  <img src="{% static 'img/img_h_8.jpg' %}" alt="Image" class="img-fluid">
+                  <img src="{% static 'img/img_h_8.jpg' %}" class="img-fluid">
                 </div>
               </div>
               <div class="swiper-pagination"></div>
             </div>
           </div>
           <div class="col-lg-4 order-lg-1">
-            <span class="section-subtitle" data-aos="fade-up">Welcome</span>
-            <h1 class="mb-4" data-aos="fade-up">Excepteur sint occaecat cupidatat non proident</h1>
-            <p data-aos="fade-up">
-              Ce projet a été créé dans le cadre d'un test technique destiné à démontrer mes compétences en développement d'applications web avec le framework Django. Le projet vise à simuler un site de blog où les utilisateurs peuvent s'inscrire, se connecter, publier des articles, et voir les articles publiés par d'autres utilisateurs en incluant un support multilang et une implementation de LLM.            </p>
-            <p class="mt-5" data-aos="fade-up">
-            </p>
+            <span class="section-subtitle" data-aos="fade-up">{% trans "Welcome" %}</span>
+            <h1 class="mb-4" data-aos="fade-up">{% trans "Excepteur sint occaecat cupidatat non proident" %}</h1>
+            <p data-aos="fade-up">{% trans "This project was created as a technical test to demonstrate my skills in developing web applications with the Django framework. The project aims to simulate a blog site where users can register, log in, post articles, and view articles posted by other users, including multilingual support and LLM implementation." %}</p>
+         
           </div>
         </div>
       </div>
@@ -118,20 +125,15 @@
     <section id="blog-posts" class="blog-posts section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <p>Recent Posts</p>
-        <h2>Blog Posts</h2>
-       
+        <p>{% trans "Recent Posts" %}</p>
+        <h2>{% trans "Blog Posts" %}</h2>
         {% if user.is_authenticated %}
         <div class="d-flex align-items-center">
-          Bonjour <img src="{{ user.author.photo.url }}" alt="Profile Image" class="img-fluid rounded-circle" style="width: 40px; height: 40px; margin-right: 10px; margin-right: 10px;">
+          {% trans "hello" %}  <img src="{{ user.author.photo.url }}" alt="{% trans "Profile Image" %}" class="img-fluid rounded-circle" style="width: 40px; height: 40px; margin-right: 10px;">
           <strong style="margin-right:10px ;">{{ user.author.name }}</strong>
-          vous pouvez <a href="{% url 'add_article' %}" class="btn btn-primary ml-3" style="margin-left: 10px; background-color:#34bf49;">Ajouter un Article</a>
+          {% trans "you can" %} <a href="{% url 'add_article' %}" class="btn btn-primary ml-3" style="margin-left: 10px; background-color:#34bf49;">{% trans "Add an Article" %}</a>
       </div>
       {% endif %}
-
-      </div>
- 
-    </div>
       </div><!-- End Section Title -->
       <div class="container">
         <div class="row gy-4">
@@ -139,18 +141,17 @@
           <div class="col-md-6 col-lg-4">
             <div class="post-entry" data-aos="fade-up" data-aos-delay="100">
               <a href="{% url 'article_detail' article.pk %}" class="thumb d-block">
-                
               </a>
               <div class="post-content">
                 <div class="meta">
-                  <a href="#" class="cat">Publié le :</a> •
+                  <a href="#" class="cat">{% trans "Published on:" %}</a> •
                   <span class="date">{{ article.publication_date|date:"F d, Y" }}</span>
                 </div>
                 <h3><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h3>
                 <p>{{ article.content|truncatewords:30 }}</p>
                 <div class="d-flex author align-items-center">
                   <div class="pic">
-                    <img src="{{ article.author.photo.url }}" alt="Image" class="img-fluid rounded-circle">
+                    <img src="{{ article.author.photo.url }}" alt="{% trans "Image" %}" class="img-fluid rounded-circle">
                   </div>
                   <div class="author-name">
                     <strong class="d-block">{{ article.author.name }}</strong>
@@ -160,10 +161,9 @@
             </div>
           </div>
           {% endfor %}
-   
+        </div>
       </div>
     </section><!-- /Blog Posts Section -->
-
   </main>
 
   <footer id="footer" class="footer light-background">
@@ -171,16 +171,12 @@
       <div class="row g-4">
         <div class="col-md-6 col-lg-3 mb-3 mb-md-0">
           <div class="widget">
-            <h3 class="widget-heading">About Us</h3>
-            <p class="mb-4">
-              There live the blind texts. Separated they live in Bookmarksgrove
-              right at the coast of the Semantics, a large language ocean.
-            </p>
+            <p class="mb-4">{% trans "There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean." %}</p>
           </div>
         </div>
         <div class="col-md-6 col-lg-3 pl-lg-5">
           <div class="widget">
-            <h3 class="widget-heading">Connect</h3>
+            <h3 class="widget-heading">{% trans "Connect" %}</h3>
             <ul class="list-unstyled social-icons light mb-3">
               <li><a href="https://www.bouazzaouisoheib.site/" target="_blank"><span class="bi bi-cloud"></span></a></li>
               <li><a href="https://www.linkedin.com/in/soheib-bouazzaoui/" target="_blank"><span class="bi bi-linkedin"></span></a></li>
@@ -210,6 +206,5 @@
 
   <!-- Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
-
 </body>
 </html>
