@@ -65,4 +65,12 @@ Ce projet est inachevé en raison d'un manque de temps et a été réalisé en 3
  4. Pushez votre branche (git push origin feature/AmazingFeature).
  5. Ouvrez une Pull Request.
 
+## 🔗 Links
+[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.bouazzaouisoheib.site/)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/soheib-bouazzaoui/)
+
+## Authors
+
+- [@Bouazzaoui Soheib](https://github.com/pinpin-http)
+
 
